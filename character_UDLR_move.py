@@ -39,6 +39,8 @@ while running:
 
     if dir_x > 0:
         clip_y = 200
+    elif dir_x < 0:
+        clip_y = 300
     else:
         clip_y = 0
     character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, CANVAS_HEIGHT // 2)
