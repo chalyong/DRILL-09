@@ -3,6 +3,8 @@
 CANVAS_WIDTH, CANVAS_HEIGHT = 1280, 1024
 FRAME_W, FRAME_H = 100, 100
 FRAME_COUNT = 8
+MARGIN_X = FRAME_W // 2 - 15
+MARGIN_Y = FRAME_H // 2 - 15
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
@@ -65,8 +67,8 @@ while running:
     x += dir_x * 10
     y += dir_y * 10
 
-    x = max(0, min(x, CANVAS_WIDTH))
-    y = max(0, min(y, CANVAS_HEIGHT))
+    x = max(MARGIN_X, min(x, CANVAS_WIDTH - MARGIN_X))
+    y = max(MARGIN_Y, min(y, CANVAS_HEIGHT - MARGIN_Y))
     delay(0.05)
 
 close_canvas()
