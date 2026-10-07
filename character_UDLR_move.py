@@ -18,14 +18,16 @@ def handle_events():
 
 
 running = True
+frame = 0
 while running:
     clear_canvas()
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-    character.clip_draw(0, 0, 100, 100, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    character.clip_draw(frame * 100, 0, 100, 100, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
     update_canvas()
 
     handle_events()
 
+    frame = (frame + 1) % 8
     delay(0.05)
 
 close_canvas()
