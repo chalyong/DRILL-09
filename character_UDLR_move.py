@@ -1,6 +1,9 @@
 ﻿from pico2d import *
 
-open_canvas(1280, 1024)
+CANVAS_WIDTH, CANVAS_HEIGHT = 1280, 1024
+
+open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+tuk_ground = load_image('TUK_GROUND.png')
 
 
 def handle_events():
@@ -16,6 +19,7 @@ def handle_events():
 running = True
 while running:
     clear_canvas()
+    tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
     update_canvas()
 
     handle_events()
