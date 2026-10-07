@@ -3,6 +3,12 @@
 CANVAS_WIDTH, CANVAS_HEIGHT = 1280, 1024
 FRAME_W, FRAME_H = 100, 100
 FRAME_COUNT = 8
+
+CLIP_Y_IDLE_RIGHT = 0
+CLIP_Y_IDLE_LEFT = 100
+CLIP_Y_RUN_RIGHT = 200
+CLIP_Y_RUN_LEFT = 300
+
 MARGIN_X = FRAME_W // 2 - 15
 MARGIN_Y = FRAME_H // 2 - 15
 
@@ -51,13 +57,13 @@ while running:
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
 
     if dir_x > 0:
-        clip_y = 200
+        clip_y = CLIP_Y_RUN_RIGHT
     elif dir_x < 0:
-        clip_y = 300
+        clip_y = CLIP_Y_RUN_LEFT
     elif dir_y != 0:
-        clip_y = 200 if face_dir == 1 else 300
+        clip_y = CLIP_Y_RUN_RIGHT if face_dir == 1 else CLIP_Y_RUN_LEFT
     else:
-        clip_y = 0 if face_dir == 1 else 100
+        clip_y = CLIP_Y_IDLE_RIGHT if face_dir == 1 else CLIP_Y_IDLE_LEFT
     character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, y)
     update_canvas()
 
