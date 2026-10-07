@@ -32,7 +32,12 @@ dir_x = 0
 while running:
     clear_canvas()
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-    character.clip_draw(frame * FRAME_W, 0, FRAME_W, FRAME_H, x, CANVAS_HEIGHT // 2)
+
+    if dir_x > 0:
+        clip_y = 200
+    else:
+        clip_y = 0
+    character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, CANVAS_HEIGHT // 2)
     update_canvas()
 
     handle_events()
