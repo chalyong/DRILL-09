@@ -4,6 +4,7 @@ CANVAS_WIDTH, CANVAS_HEIGHT = 1280, 1024
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 tuk_ground = load_image('TUK_GROUND.png')
+character = load_image('animation_sheet.png')
 
 
 def handle_events():
@@ -20,6 +21,7 @@ running = True
 while running:
     clear_canvas()
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    character.clip_draw(0, 0, 100, 100, CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
     update_canvas()
 
     handle_events()
