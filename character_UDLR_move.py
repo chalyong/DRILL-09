@@ -10,7 +10,7 @@ character = load_image('animation_sheet.png')
 
 
 def handle_events():
-    global running, dir_x, dir_y
+    global running, dir_x, dir_y, face_dir
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -18,8 +18,10 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
                 dir_x += 1
+                face_dir = 1
             elif event.key == SDLK_LEFT:
                 dir_x -= 1
+                face_dir = -1
             elif event.key == SDLK_UP:
                 dir_y += 1
             elif event.key == SDLK_DOWN:
@@ -41,6 +43,7 @@ running = True
 frame = 0
 x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 dir_x, dir_y = 0, 0
+face_dir = 1
 while running:
     clear_canvas()
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
@@ -49,6 +52,8 @@ while running:
         clip_y = 200
     elif dir_x < 0:
         clip_y = 300
+    elif dir_y != 0:
+        clip_y = 200 if face_dir == 1 else 300
     else:
         clip_y = 0
     character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, y)
