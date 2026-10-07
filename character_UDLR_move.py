@@ -66,6 +66,7 @@ while running:
     y += dir_y * 10
 
     x = max(0, min(x, CANVAS_WIDTH))
+    y = max(0, min(y, CANVAS_HEIGHT))
     delay(0.05)
 
 close_canvas()
