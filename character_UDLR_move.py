@@ -1,17 +1,17 @@
 ﻿from pico2d import *
 
 # 캔버스 크기 (배경 이미지 크기와 동일)
-CANVAS_WIDTH, CANVAS_HEIGHT = 1280, 1024
+CANVAS_WIDTH, CANVAS_HEIGHT = 800, 600
 
 # 스프라이트 프레임 정보
 FRAME_W, FRAME_H = 100, 100
 FRAME_COUNT = 8
 
 # 스프라이트 시트 행(clip_y)
-CLIP_Y_IDLE_RIGHT = 0
-CLIP_Y_IDLE_LEFT = 100
-CLIP_Y_RUN_RIGHT = 200
-CLIP_Y_RUN_LEFT = 300
+CLIP_Y_IDLE_RIGHT = 300
+CLIP_Y_IDLE_LEFT = 200
+CLIP_Y_RUN_RIGHT = 100
+CLIP_Y_RUN_LEFT = 0
 
 # 이동 속도(px/frame), 프레임 지연(초)
 MOVE_SPEED = 10
