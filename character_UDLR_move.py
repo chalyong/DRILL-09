@@ -64,6 +64,8 @@ while running:
     frame = (frame + 1) % FRAME_COUNT
     x += dir_x * 10
     y += dir_y * 10
+
+    x = max(0, min(x, CANVAS_WIDTH))
     delay(0.05)
 
 close_canvas()
