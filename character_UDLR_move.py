@@ -9,6 +9,9 @@ CLIP_Y_IDLE_LEFT = 100
 CLIP_Y_RUN_RIGHT = 200
 CLIP_Y_RUN_LEFT = 300
 
+MOVE_SPEED = 10
+FRAME_DELAY = 0.05
+
 MARGIN_X = FRAME_W // 2 - 15
 MARGIN_Y = FRAME_H // 2 - 15
 
@@ -71,11 +74,11 @@ while running:
     handle_events()
 
     frame = (frame + 1) % FRAME_COUNT
-    x += dir_x * 10
-    y += dir_y * 10
+    x += dir_x * MOVE_SPEED
+    y += dir_y * MOVE_SPEED
 
     x = max(MARGIN_X, min(x, CANVAS_WIDTH - MARGIN_X))
     y = max(MARGIN_Y, min(y, CANVAS_HEIGHT - MARGIN_Y))
-    delay(0.05)
+    delay(FRAME_DELAY)
 
 close_canvas()
