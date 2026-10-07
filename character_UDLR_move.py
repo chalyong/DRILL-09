@@ -17,6 +17,16 @@ tuk_ground = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
 
 
+def get_clip_y(dir_x, dir_y, face_dir):
+    if dir_x > 0:
+        return CLIP_Y_RUN_RIGHT
+    if dir_x < 0:
+        return CLIP_Y_RUN_LEFT
+    if dir_y != 0:
+        return CLIP_Y_RUN_RIGHT if face_dir == 1 else CLIP_Y_RUN_LEFT
+    return CLIP_Y_IDLE_RIGHT if face_dir == 1 else CLIP_Y_IDLE_LEFT
+
+
 def handle_events():
     global running, dir_x, dir_y, face_dir
     events = get_events()
@@ -55,16 +65,7 @@ face_dir = 1
 while running:
     clear_canvas()
     tuk_ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-
-    if dir_x > 0:
-        clip_y = CLIP_Y_RUN_RIGHT
-    elif dir_x < 0:
-        clip_y = CLIP_Y_RUN_LEFT
-    elif dir_y != 0:
-        clip_y = CLIP_Y_RUN_RIGHT if face_dir == 1 else CLIP_Y_RUN_LEFT
-    else:
-        clip_y = CLIP_Y_IDLE_RIGHT if face_dir == 1 else CLIP_Y_IDLE_LEFT
-    character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, y)
+    character.clip_draw(frame * FRAME_W, get_clip_y(dir_x, dir_y, face_dir), FRAME_W, FRAME_H, x, y)
     update_canvas()
 
     handle_events()
