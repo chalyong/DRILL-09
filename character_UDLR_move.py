@@ -55,7 +55,7 @@ while running:
     elif dir_y != 0:
         clip_y = 200 if face_dir == 1 else 300
     else:
-        clip_y = 0
+        clip_y = 0 if face_dir == 1 else 100
     character.clip_draw(frame * FRAME_W, clip_y, FRAME_W, FRAME_H, x, y)
     update_canvas()
 
